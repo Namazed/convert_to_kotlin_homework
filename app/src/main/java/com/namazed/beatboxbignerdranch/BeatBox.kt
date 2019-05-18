@@ -30,7 +30,7 @@ class BeatBox(context: Context) {
     private fun loadSounds() {
         val soundNames = assets.list(SOUNDS_FOLDER)
         soundNames?.forEach {
-            val assetPath = SOUNDS_FOLDER + "/" + it
+            val assetPath = "$SOUNDS_FOLDER/$it"
             val sound = Sound(assetPath)
             load(sound)
             sounds.add(sound)
@@ -43,5 +43,4 @@ class BeatBox(context: Context) {
         val soundId = soundPool.load(assetFileDescriptor, 1)
         sound.soundId = soundId
     }
-
 }

@@ -3,23 +3,17 @@ package com.namazed.beatboxbignerdranch
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-
-private const val LAYOUT: Int = R.layout.activity_fragment
-private const val CONTAINER_FRAGMENT: Int = R.id.fragment_container
+import kotlinx.android.synthetic.main.activity_fragment.*
 
 class BeatBoxActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(LAYOUT)
-        val manager: FragmentManager = supportFragmentManager
-        val fragment: Fragment? = manager.findFragmentById(CONTAINER_FRAGMENT)
+        setContentView(R.layout.activity_fragment)
 
-        fragment.let {
-            manager.beginTransaction().run {
-                add(CONTAINER_FRAGMENT, BeatBoxFragment.newInstance())
+        fragment_container.let {
+            supportFragmentManager.beginTransaction().run {
+                add(R.id.fragment_container, BeatBoxFragment.newInstance())
                 commit()
             }
         }

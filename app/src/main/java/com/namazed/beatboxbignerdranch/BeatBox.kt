@@ -39,7 +39,7 @@ class BeatBox(context: Context) {
 
     @Throws(IOException::class)
     private fun load(sound: Sound) {
-        val assetFileDescriptor = assets.openFd(sound.getAssetPath())
+        val assetFileDescriptor = assets.openFd(sound.assetPath)
         val soundId = soundPool.load(assetFileDescriptor, 1)
         sound.soundId = soundId
     }

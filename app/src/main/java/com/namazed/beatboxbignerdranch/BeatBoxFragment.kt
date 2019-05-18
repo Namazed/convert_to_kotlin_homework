@@ -6,43 +6,35 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.NonNull
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.namazed.beatboxbignerdranch.adapter.SoundAdapter
-import kotlinx.android.synthetic.main.fragment_beat_box.view.*
+import kotlinx.android.synthetic.main.fragment_beat_box.*
 
 class BeatBoxFragment : Fragment() {
 
-    private var beatBox: BeatBox? = null
-
-    companion object {
-        @NonNull
-        @JvmStatic
-        fun newInstance(): BeatBoxFragment {
-            return BeatBoxFragment()
-        }
+    private val beatBox: BeatBox by lazy(LazyThreadSafetyMode.NONE) {
+        BeatBox(activity!!)
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        beatBox = BeatBox(activity!!)
+    companion object {
+        @JvmStatic
+        fun newInstance(): BeatBoxFragment = BeatBoxFragment()
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        fragment_beat_box_recycler_view.layoutManager = GridLayoutManager(activity, 3)
+        fragment_beat_box_recycler_view.adapter = SoundAdapter(beatBox.sounds, beatBox)
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.fragment_beat_box, container, false)
-        val recyclerView: RecyclerView = view.fragment_beat_box_recycler_view as RecyclerView
-        recyclerView.layoutManager = GridLayoutManager(activity, 3)
-        recyclerView.adapter = SoundAdapter(beatBox!!.getSounds(), beatBox)
-        return view
-    }
+    ): View = inflater.inflate(R.layout.fragment_beat_box, container, false)
 
     override fun onDestroy() {
         super.onDestroy()
-        beatBox?.release()
+        beatBox.release()
     }
 }

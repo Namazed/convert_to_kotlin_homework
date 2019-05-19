@@ -9,13 +9,13 @@ import androidx.annotation.RequiresApi
 
 object SoundPoolFactory {
     @JvmStatic
-    fun createSoundPool(maxStreams: Int, streamType: Int): SoundPool {
+    fun createSoundPool(maxStreams: Int, streamType: Int): SoundPool =
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            return createSoundPoolForApi21(maxStreams, streamType)
+            createSoundPoolForApi21(maxStreams, streamType)
+        } else {
+            createSoundPoolForApiBelow21(maxStreams, streamType)
         }
 
-        return createSoundPoolForApiBelow21(maxStreams, streamType)
-    }
 
     @JvmStatic
     private fun createSoundPoolForApiBelow21(maxStreams: Int, streamType: Int): SoundPool {

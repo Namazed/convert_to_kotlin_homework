@@ -1,3 +1,5 @@
+@file: JvmName("Sound")
+
 package com.namazed.beatboxbignerdranch
 
 import android.os.Bundle
@@ -18,13 +20,13 @@ class BeatBoxFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         fragment_beat_box_recycler_view.apply {
             layoutManager = GridLayoutManager(activity, 3)
-            adapter = SoundAdapter(beatBox.getSounds(), beatBox)
+            adapter = SoundAdapter(beatBox.sounds, beatBox)
         }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?):
             View = inflater.inflate(R.layout.fragment_beat_box, container, false)
-    
+
     override fun onDestroy() {
         super.onDestroy()
         beatBox.release()

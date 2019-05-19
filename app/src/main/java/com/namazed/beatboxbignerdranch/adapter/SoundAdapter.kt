@@ -1,3 +1,5 @@
+@file: JvmName("SoundAdapter")
+
 package com.namazed.beatboxbignerdranch.adapter
 
 import android.view.LayoutInflater
@@ -6,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.namazed.beatboxbignerdranch.BeatBox
 import com.namazed.beatboxbignerdranch.R
 import com.namazed.beatboxbignerdranch.Sound
-
 
 class SoundAdapter(private val sounds: List<Sound>, private val beatBox: BeatBox) :
     RecyclerView.Adapter<SoundHolder>() {

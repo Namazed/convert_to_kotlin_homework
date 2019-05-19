@@ -1,4 +1,3 @@
-@file: JvmName("Sound")
 package com.namazed.beatboxbignerdranch
 
 class Sound internal constructor(internal val assetPath: String) {

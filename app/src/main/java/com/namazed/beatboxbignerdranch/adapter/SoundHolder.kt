@@ -1,4 +1,3 @@
-@file: JvmName("SoundHolder")
 package com.namazed.beatboxbignerdranch.adapter
 
 import android.view.View
@@ -8,7 +7,7 @@ import com.namazed.beatboxbignerdranch.BeatBox
 import com.namazed.beatboxbignerdranch.R
 import com.namazed.beatboxbignerdranch.Sound
 
-class SoundHolder internal constructor(itemView: View, private val beatBox: BeatBox) :
+class SoundHolder (itemView: View, private val beatBox: BeatBox) :
     RecyclerView.ViewHolder(itemView), View.OnClickListener {
     private val soundButton: Button
     private var sound: Sound? = null
@@ -24,6 +23,8 @@ class SoundHolder internal constructor(itemView: View, private val beatBox: Beat
     }
 
     override fun onClick(view: View) {
-        beatBox.play(sound!!)
+        sound?.let {
+            beatBox.play(it)
+        }
     }
 }

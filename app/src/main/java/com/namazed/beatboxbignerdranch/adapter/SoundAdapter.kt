@@ -1,4 +1,3 @@
-@file: JvmName("SoundAdapter")
 package com.namazed.beatboxbignerdranch.adapter
 
 import android.view.LayoutInflater
@@ -19,13 +18,7 @@ class SoundAdapter(private val sounds: List<Sound>, private val beatBox: BeatBox
         return SoundHolder(view, beatBox)
     }
 
-    override fun onBindViewHolder(holder: SoundHolder, position: Int) {
-        val sound = sounds[position]
-        holder.bindSound(sound)
-    }
+    override fun onBindViewHolder(holder: SoundHolder, position: Int) = holder.bindSound(sounds[position])
 
-    override fun getItemCount(): Int {
-        return sounds.size
-    }
-
+    override fun getItemCount(): Int = sounds.size
 }

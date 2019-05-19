@@ -1,3 +1,4 @@
+@file: JvmName("MyBeatBox")
 
 package com.namazed.beatboxbignerdranch
 
@@ -10,9 +11,9 @@ import java.io.IOException
 private const val SOUNDS_FOLDER: String = "sample_sounds"
 private const val MAX_SOUNDS: Int = 5
 
-class BeatBox(context: Context) {
+class BeatBox(context: Context, private var assets: AssetManager = context.assets) {
 
-    private var assets: AssetManager = context.assets
+    @JvmField
     val sounds: MutableList<Sound>
     private val soundPool: SoundPool = SoundPoolFactory.createSoundPool(MAX_SOUNDS, AudioManager.STREAM_MUSIC)
 
@@ -23,9 +24,7 @@ class BeatBox(context: Context) {
 
     fun play(sound: Sound) = soundPool.play(sound.soundId, 1.0f, 1.0f, 1, 0, 1.0f)
 
-    fun release() {
-        soundPool.release()
-    }
+    fun release() = soundPool.release()
 
     private fun loadSounds() {
         val soundNames = assets.list(SOUNDS_FOLDER)

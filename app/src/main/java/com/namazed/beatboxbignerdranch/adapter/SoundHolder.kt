@@ -24,7 +24,7 @@ class SoundHolder(override val containerView: View, private val beatBox: BeatBox
     }
 
     override fun onClick(view: View) {
-        sound.let {
+        sound?.let {
             beatBox.play(sound!!)
         }
     }

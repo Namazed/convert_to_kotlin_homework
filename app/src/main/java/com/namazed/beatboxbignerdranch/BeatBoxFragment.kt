@@ -24,8 +24,10 @@ class BeatBoxFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        fragment_beat_box_recycler_view.layoutManager = GridLayoutManager(activity, 3)
-        fragment_beat_box_recycler_view.adapter = SoundAdapter(beatBox.sounds, beatBox)
+        fragment_beat_box_recycler_view.apply {
+            layoutManager = GridLayoutManager(activity, 3)
+            adapter = SoundAdapter(beatBox.sounds, beatBox)
+        }
     }
 
     override fun onCreateView(

@@ -2,7 +2,7 @@
 
 package com.namazed.beatboxbignerdranch
 
-class Sound(val assetPath: String) {
+class Sound(@JvmField val assetPath: String) {
 
     @JvmField
     val name: String

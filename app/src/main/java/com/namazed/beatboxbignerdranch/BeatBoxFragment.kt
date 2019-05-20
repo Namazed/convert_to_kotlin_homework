@@ -34,6 +34,7 @@ class BeatBoxFragment : Fragment() {
     }
 
     companion object {
+        @JvmStatic
         fun newInstance(): BeatBoxFragment = BeatBoxFragment()
     }
 

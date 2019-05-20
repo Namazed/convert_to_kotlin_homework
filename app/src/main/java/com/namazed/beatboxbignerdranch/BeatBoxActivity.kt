@@ -1,4 +1,5 @@
 @file: JvmName("BeatBoxActivity")
+
 package com.namazed.beatboxbignerdranch
 
 import android.os.Bundle
@@ -18,8 +19,6 @@ class BeatBoxActivity : AppCompatActivity() {
         val manager: FragmentManager = supportFragmentManager
         val fragment: Fragment? = manager.findFragmentById(CONTAINER_FRAGMENT)
 
-        if (fragment == null) {
-            manager.beginTransaction().add(CONTAINER_FRAGMENT, BeatBoxFragment.newInstance()).commit()
-        }
+        fragment ?: manager.beginTransaction().add(CONTAINER_FRAGMENT, BeatBoxFragment.newInstance()).commit()
     }
 }

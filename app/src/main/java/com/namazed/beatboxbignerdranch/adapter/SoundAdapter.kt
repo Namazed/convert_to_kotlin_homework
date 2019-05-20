@@ -1,4 +1,5 @@
 @file: JvmName("SoundAdapter")
+
 package com.namazed.beatboxbignerdranch.adapter
 
 import android.view.LayoutInflater

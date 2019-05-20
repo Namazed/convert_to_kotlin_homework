@@ -1,3 +1,5 @@
+@file: JvmName("BeatBoxActivityConst")
+
 package com.namazed.beatboxbignerdranch
 
 import android.app.Fragment

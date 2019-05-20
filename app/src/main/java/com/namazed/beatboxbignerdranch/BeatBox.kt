@@ -1,3 +1,5 @@
+@file: JvmName("BeatBoxConst")
+
 package com.namazed.beatboxbignerdranch
 
 import android.content.Context
@@ -12,9 +14,8 @@ private const val TAG = "BeatBox"
 private const val SOUNDS_FOLDER = "sample_sounds"
 private const val MAX_SOUNDS = 5
 
-class BeatBox constructor(context: Context) {
+class BeatBox(context: Context, private val assets: AssetManager = context.assets) {
 
-    private val assets: AssetManager = context.assets
     val sounds = ArrayList<Sound>()
     private val soundPool: SoundPool = SoundPoolFactory
         .createSoundPool(MAX_SOUNDS, AudioManager.STREAM_MUSIC)

@@ -1,4 +1,4 @@
-@file: JvmName("BeatBoxActivity")
+@file: JvmName("BeatBoxActivityKotlin")
 
 package com.namazed.beatboxbignerdranch
 
@@ -19,6 +19,9 @@ class BeatBoxActivity : AppCompatActivity() {
         val manager: FragmentManager = supportFragmentManager
         val fragment: Fragment? = manager.findFragmentById(CONTAINER_FRAGMENT)
 
-        fragment ?: manager.beginTransaction().add(CONTAINER_FRAGMENT, BeatBoxFragment.newInstance()).commit()
+        fragment ?: manager.beginTransaction().add(
+            CONTAINER_FRAGMENT,
+            BeatBoxFragment.newInstance()
+        ).commit()
     }
 }

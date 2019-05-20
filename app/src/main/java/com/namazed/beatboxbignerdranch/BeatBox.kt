@@ -1,4 +1,4 @@
-@file: JvmName("BeatBox")
+@file: JvmName("BeatBoxKotlin")
 
 package com.namazed.beatboxbignerdranch
 
@@ -15,23 +15,30 @@ private const val TAG: String = "BeatBox"
 private const val SOUNDS_FOLDER: String = "sample_sounds"
 private const val MAX_SOUNDS: Int = 5
 
-class BeatBox internal constructor(
+class BeatBox constructor(
     context: Context,
     private val assets: AssetManager = context.assets,
     private val soundPool: SoundPool = SoundPoolFactory.createSoundPool(
         MAX_SOUNDS,
         AudioManager.STREAM_MUSIC
     ),
-    internal val sounds: ArrayList<Sound> = ArrayList()
+    val sounds: ArrayList<Sound> = ArrayList()
 ) {
 
     init {
         loadSounds()
     }
 
-    internal fun play(sound: Sound) = soundPool.play(sound.soundId, 1.0f, 1.0f, 1, 0, 1.0f)
+    fun play(sound: Sound) = soundPool.play(
+        sound.soundId,
+        1.0f,
+        1.0f,
+        1,
+        0,
+        1.0f
+    )
 
-    internal fun release() = soundPool.release()
+    fun release() = soundPool.release()
 
     private fun loadSounds() {
         val soundNames: Array<String>?
@@ -43,8 +50,6 @@ class BeatBox internal constructor(
             return
         }
 
-        soundNames ?: Log.i(TAG, "SoundNames is null")
-
         soundNames?.forEach {
             try {
                 val assetPath = "$SOUNDS_FOLDER/$it"
@@ -54,7 +59,7 @@ class BeatBox internal constructor(
             } catch (e: IOException) {
                 Log.e(TAG, "Could not load sound $it", e)
             }
-        }
+        } ?: Log.i(TAG, "SoundNames is null")
     }
 
     @Throws(IOException::class)

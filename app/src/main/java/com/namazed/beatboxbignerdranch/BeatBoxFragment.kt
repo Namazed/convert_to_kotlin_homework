@@ -1,4 +1,4 @@
-@file: JvmName("BeatBoxFragment")
+@file: JvmName("BeatBoxFragmentFile")
 
 package com.namazed.beatboxbignerdranch
 
@@ -8,8 +8,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.namazed.beatboxbignerdranch.adapter.SoundAdapter
+import kotlinx.android.synthetic.main.fragment_beat_box.*
 
 
 class BeatBoxFragment : Fragment() {
@@ -17,18 +17,16 @@ class BeatBoxFragment : Fragment() {
         BeatBox(activity!!)
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        retainInstance = true
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        fragment_beat_box_recycler_view.apply {
+            layoutManager = GridLayoutManager(activity, 3)
+            adapter = SoundAdapter(beatBox.sounds, beatBox)
+        }
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_beat_box, container, false)
-        val recyclerView = view.findViewById<RecyclerView>(R.id.fragment_beat_box_recycler_view)
-        recyclerView.layoutManager = GridLayoutManager(activity, 3)
-        recyclerView.adapter = SoundAdapter(beatBox.getSounds(), beatBox)
-        return view
-    }
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
+        inflater.inflate(R.layout.fragment_beat_box, container, false)
 
     override fun onDestroy() {
         super.onDestroy()
@@ -37,8 +35,6 @@ class BeatBoxFragment : Fragment() {
 
     companion object {
         @JvmStatic
-        fun newInstance(): BeatBoxFragment {
-            return BeatBoxFragment()
-        }
+        fun newInstance(): BeatBoxFragment = BeatBoxFragment()
     }
 }

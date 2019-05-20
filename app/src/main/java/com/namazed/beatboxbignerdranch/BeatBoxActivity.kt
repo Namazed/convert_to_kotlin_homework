@@ -1,4 +1,4 @@
-@file: JvmName("BeatBoxActivity")
+@file: JvmName("BeatBoxActivityFile")
 
 package com.namazed.beatboxbignerdranch
 
@@ -7,9 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 
-
-private const val CONTAINER_FRAGMENT:Int = R.id.fragment_container
-private const val LAYOUT :Int = R.layout.activity_fragment
+private const val CONTAINER_FRAGMENT: Int = R.id.fragment_container
+private const val LAYOUT: Int = R.layout.activity_fragment
 
 class BeatBoxActivity : AppCompatActivity() {
 
@@ -17,10 +16,10 @@ class BeatBoxActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(LAYOUT)
 
-        val manager : FragmentManager = supportFragmentManager
+        val manager: FragmentManager = supportFragmentManager
         var fragment: Fragment? = manager.findFragmentById(CONTAINER_FRAGMENT)
 
-        fragment?: manager.beginTransaction().run {
+        fragment ?: manager.beginTransaction().run {
             fragment = BeatBoxFragment.newInstance()
             add(CONTAINER_FRAGMENT, BeatBoxFragment.newInstance())
             commit()

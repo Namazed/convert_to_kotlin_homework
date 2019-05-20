@@ -1,4 +1,4 @@
-@file: JvmName("SoundPoolFactory")
+@file: JvmName("SoundPoolFactoryFile")
 
 package com.namazed.beatboxbignerdranch
 
@@ -7,7 +7,7 @@ import android.media.SoundPool
 import android.os.Build
 import androidx.annotation.RequiresApi
 
-internal object SoundPoolFactory {
+object SoundPoolFactory {
 
     @JvmStatic
     fun createSoundPool(maxStreams: Int, streamType: Int): SoundPool {
@@ -19,9 +19,8 @@ internal object SoundPoolFactory {
     }
 
     @JvmStatic
-    private fun createSoundPoolForApiBelow21(maxStreams: Int, streamType: Int): SoundPool {
-        return SoundPool(maxStreams, streamType, 0)
-    }
+    private fun createSoundPoolForApiBelow21(maxStreams: Int, streamType: Int): SoundPool
+            = SoundPool(maxStreams, streamType, 0)
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @JvmStatic

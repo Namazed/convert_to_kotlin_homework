@@ -1,4 +1,4 @@
-@file: JvmName("Beatbox")
+@file: JvmName("BeatBoxFile")
 
 package com.namazed.beatboxbignerdranch
 
@@ -28,11 +28,7 @@ class BeatBox(context: Context, private val assets: AssetManager = context.asset
         soundPool.play(soundId, 1.0f, 1.0f, 1, 0, 1.0f)
     }
 
-    internal fun getSounds(): List<Sound> {
-        return sounds
-    }
-
-    internal fun release() {
+    fun release() {
         soundPool.release()
     }
 

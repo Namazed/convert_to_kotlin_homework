@@ -1,5 +1,4 @@
-@file: JvmName("BeatBoxActivity")
-@file: JvmMultifileClass
+@file: JvmName("MyBeatBoxActivity")
 
 package com.namazed.beatboxbignerdranch
 

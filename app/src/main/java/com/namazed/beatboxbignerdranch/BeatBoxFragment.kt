@@ -1,4 +1,4 @@
-@file: JvmName("Sound")
+@file: JvmName("BeatBoxFragment")
 
 package com.namazed.beatboxbignerdranch
 

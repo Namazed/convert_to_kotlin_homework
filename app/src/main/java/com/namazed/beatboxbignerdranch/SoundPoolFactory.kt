@@ -17,9 +17,11 @@ object SoundPoolFactory {
             createSoundPoolForApiBelow21(maxStreams, streamType)
         }
 
+    @JvmStatic
     private fun createSoundPoolForApiBelow21(maxStreams: Int, streamType: Int): SoundPool =
         SoundPool(maxStreams, streamType, 0)
 
+    @JvmStatic
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private fun createSoundPoolForApi21(maxStreams: Int, streamType: Int): SoundPool {
         val builder = SoundPool.Builder()

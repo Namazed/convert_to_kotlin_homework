@@ -12,7 +12,7 @@ import java.util.*
 private const val SOUNDS_FOLDER = "sample_sounds"
 private const val MAX_SOUNDS = 5
 
-class BeatBox internal constructor(context: Context) {
+class BeatBox(context: Context) {
 
     private val assets: AssetManager = context.assets
     val sounds = ArrayList<Sound>()
@@ -27,13 +27,8 @@ class BeatBox internal constructor(context: Context) {
         soundPool.play(soundId, 1.0f, 1.0f, 1, 0, 1.0f)
     }
 
-    internal fun getSounds(): List<Sound> {
-        return sounds
-    }
-
-    internal fun release() {
+    fun release() =
         soundPool.release()
-    }
 
     private fun loadSounds() {
         val soundNames: Array<String>? = assets.list(SOUNDS_FOLDER)

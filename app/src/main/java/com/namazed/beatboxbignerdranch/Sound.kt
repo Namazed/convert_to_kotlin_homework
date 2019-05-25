@@ -2,7 +2,8 @@
 
 package com.namazed.beatboxbignerdranch
 
-class Sound internal constructor(internal val assetPath: String) {
+class Sound(val assetPath: String) {
+
     @JvmField
     val name: String
     @JvmField

@@ -1,10 +1,13 @@
-@file: JvmName("BeatBoxActivity")
+@file: JvmName("BeatBoxActivity_")
 
 package com.namazed.beatboxbignerdranch
 
 import android.app.Fragment
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+
+private const val LAYOUT = R.layout.activity_fragment
+private const val CONTAINER_FRAGMENT = R.id.fragment_container
 
 class BeatBoxActivity : AppCompatActivity() {
 
@@ -20,11 +23,5 @@ class BeatBoxActivity : AppCompatActivity() {
             add(CONTAINER_FRAGMENT, fragment)
             commit()
         }
-    }
-
-    companion object {
-
-        private const val LAYOUT = R.layout.activity_fragment
-        private const val CONTAINER_FRAGMENT = R.id.fragment_container
     }
 }

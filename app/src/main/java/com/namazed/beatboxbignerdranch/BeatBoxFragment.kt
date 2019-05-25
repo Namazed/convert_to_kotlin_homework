@@ -17,9 +17,8 @@ class BeatBoxFragment : Fragment() {
         BeatBox(activity!!)
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_beat_box, container, false)
-    }
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
+        inflater.inflate(R.layout.fragment_beat_box, container, false)
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -36,8 +35,6 @@ class BeatBoxFragment : Fragment() {
 
     companion object {
         @JvmStatic
-        fun newInstance(): BeatBoxFragment {
-            return BeatBoxFragment()
-        }
+        fun newInstance(): BeatBoxFragment = BeatBoxFragment()
     }
 }

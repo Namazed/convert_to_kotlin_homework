@@ -18,12 +18,14 @@ class SoundHolder(override val containerView: View, private val beatBox: BeatBox
         list_item_sound_button.setOnClickListener(this)
     }
 
-    internal fun bindSound(sound: Sound) {
+    fun bindSound(sound: Sound) {
         this.sound = sound
         list_item_sound_button.text = this.sound?.name
     }
 
     override fun onClick(view: View) {
-        beatBox.play(sound!!)
+        sound?.let {
+            beatBox.play(it)
+        }
     }
 }

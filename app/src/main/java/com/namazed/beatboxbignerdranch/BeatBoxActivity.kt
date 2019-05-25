@@ -20,10 +20,9 @@ class BeatBoxActivity : AppCompatActivity() {
         var fragment: Fragment? = manager.findFragmentById(CONTAINER_FRAGMENT)
 
         fragment ?: run {
-            fragment = BeatBoxFragment.newInstance()
             manager.beginTransaction().add(
                 CONTAINER_FRAGMENT,
-                fragment as BeatBoxFragment).commit()
+                BeatBoxFragment.newInstance()).commit()
         }
     }
 }

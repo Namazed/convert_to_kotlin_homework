@@ -12,12 +12,13 @@ import com.namazed.beatboxbignerdranch.adapter.SoundAdapter
 import kotlinx.android.synthetic.main.fragment_beat_box.*
 
 class BeatBoxFragment : Fragment() {
-    private lateinit var beatBox: BeatBox
+    private val beatBox: BeatBox by lazy(LazyThreadSafetyMode.NONE) {
+        BeatBox(activity!!)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         retainInstance = true
-        beatBox = BeatBox(activity!!)
     }
 
     override fun onViewCreated(

@@ -25,8 +25,5 @@ class SoundAdapter(private val sounds: List<Sound>, private val beatBox: BeatBox
         holder.bindSound(sound)
     }
 
-    override fun getItemCount(): Int {
-        return sounds.size
-    }
-
+    override fun getItemCount(): Int = sounds.size
 }

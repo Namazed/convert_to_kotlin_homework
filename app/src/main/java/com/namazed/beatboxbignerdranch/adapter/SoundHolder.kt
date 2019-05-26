@@ -12,8 +12,8 @@ import kotlinx.android.synthetic.main.list_item_sound.*
 
 class SoundHolder constructor(
     override val containerView: View,
-    private val beatBox: BeatBox) :
-    RecyclerView.ViewHolder(containerView), View.OnClickListener, LayoutContainer {
+    private val beatBox: BeatBox
+) : RecyclerView.ViewHolder(containerView), View.OnClickListener, LayoutContainer {
 
     private val soundButton: Button = list_item_sound_button
     private var sound: Sound? = null

@@ -16,14 +16,7 @@ class BeatBoxFragment : Fragment() {
         BeatBox(activity!!)
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        retainInstance = true
-    }
-
-    override fun onViewCreated(
-        view: View,
-        savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         fragment_beat_box_recycler_view.apply {
             layoutManager = GridLayoutManager(activity, 3)
@@ -34,8 +27,8 @@ class BeatBoxFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?):
-            View = inflater.inflate(R.layout.fragment_beat_box, container, false)
+        savedInstanceState: Bundle?
+    ): View = inflater.inflate(R.layout.fragment_beat_box, container, false)
 
 
     override fun onDestroy() {

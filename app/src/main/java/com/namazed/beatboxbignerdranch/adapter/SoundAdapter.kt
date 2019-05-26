@@ -12,12 +12,13 @@ import com.namazed.beatboxbignerdranch.Sound
 
 class SoundAdapter(
     private val sounds: List<Sound>,
-    private val beatBox: BeatBox) :
-    RecyclerView.Adapter<SoundHolder>() {
+    private val beatBox: BeatBox
+) : RecyclerView.Adapter<SoundHolder>() {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
-        viewType: Int): SoundHolder {
+        viewType: Int
+    ): SoundHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.list_item_sound, parent, false)
         return SoundHolder(view, beatBox)

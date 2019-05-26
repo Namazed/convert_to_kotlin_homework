@@ -12,7 +12,8 @@ object SoundPoolFactory {
     @JvmStatic
     fun createSoundPool(
         maxStreams: Int,
-        streamType: Int): SoundPool =
+        streamType: Int
+    ): SoundPool =
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             createSoundPoolForApi21(maxStreams, streamType)
         } else {
@@ -22,8 +23,8 @@ object SoundPoolFactory {
     @JvmStatic
     private fun createSoundPoolForApiBelow21(
         maxStreams: Int,
-        streamType: Int): SoundPool = SoundPool(maxStreams, streamType, 0)
-
+        streamType: Int
+    ): SoundPool = SoundPool(maxStreams, streamType, 0)
 
     @JvmStatic
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)

@@ -12,9 +12,8 @@ import java.util.*
 private const val SOUNDS_FOLDER = "sample_sounds"
 private const val MAX_SOUNDS = 5
 
-class BeatBox(context: Context) {
+class BeatBox(context: Context, private val assets: AssetManager = context.assets) {
 
-    private val assets: AssetManager = context.assets
     val sounds = ArrayList<Sound>()
     private val soundPool: SoundPool = SoundPoolFactory.createSoundPool(MAX_SOUNDS, AudioManager.STREAM_MUSIC)
 

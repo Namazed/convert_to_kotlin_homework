@@ -5,20 +5,19 @@ package com.namazed.beatboxbignerdranch
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 
-@Suppress("DEPRECATION")
 class BeatBoxActivity : AppCompatActivity() {
 
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(LAYOUT)
 
-        val manager = fragmentManager
-        var fragment = manager.findFragmentById(CONTAINER_FRAGMENT)
+        val manager = supportFragmentManager
+        val fragment = manager.findFragmentById(CONTAINER_FRAGMENT)
 
-        fragment ?: manager.beginTransaction().add(
-            CONTAINER_FRAGMENT,
-            BeatBoxFragment.newInstance()
-        ).commit()
+        fragment ?: manager.beginTransaction().run {
+            add(CONTAINER_FRAGMENT, BeatBoxFragment.newInstance())
+            commit()
+        }
     }
 
     companion object {

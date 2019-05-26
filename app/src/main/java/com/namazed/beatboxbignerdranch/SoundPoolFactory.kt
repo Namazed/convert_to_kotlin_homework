@@ -7,17 +7,16 @@ import android.media.SoundPool
 import android.os.Build
 import androidx.annotation.RequiresApi
 
-internal object SoundPoolFactory {
+object SoundPoolFactory {
     @JvmStatic
-    fun createSoundPool(maxStreams: Int, streamType: Int): SoundPool {
-        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+    fun createSoundPool(maxStreams: Int, streamType: Int): SoundPool =
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             createSoundPoolForApi21(maxStreams, streamType)
         } else {
             createSoundPoolForApiBelow21(maxStreams, streamType)
         }
-    }
 
-    @Suppress("DEPRECATION")
+    @JvmStatic
     private fun createSoundPoolForApiBelow21(maxStreams: Int, streamType: Int): SoundPool {
         return SoundPool(maxStreams, streamType, 0)
     }

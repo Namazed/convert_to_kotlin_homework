@@ -3,17 +3,17 @@
 package com.namazed.beatboxbignerdranch
 
 import android.content.Context
+import android.content.res.AssetManager
 import android.media.AudioManager
 import android.media.SoundPool
 import java.io.IOException
-import java.util.*
+import java.util.ArrayList
 
-class BeatBox internal constructor(context: Context) {
+class BeatBox internal constructor(context: Context, private var assets: AssetManager = context.assets) {
 
     @JvmField
     val sounds: MutableList<Sound>
     private val soundPool: SoundPool
-    private var assets = context.assets
 
     init {
         sounds = ArrayList()

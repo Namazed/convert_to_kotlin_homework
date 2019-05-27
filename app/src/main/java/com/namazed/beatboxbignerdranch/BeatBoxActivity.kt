@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
 
 private const val LAYOUT: Int = R.layout.activity_fragment
-private const  val CONTAINER_FRAGMENT: Int = R.id.fragment_container
+private const val CONTAINER_FRAGMENT: Int = R.id.fragment_container
 
 class BeatBoxActivity : AppCompatActivity() {
 

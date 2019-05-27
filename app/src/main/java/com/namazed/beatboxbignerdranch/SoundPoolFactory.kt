@@ -1,4 +1,5 @@
 @file: JvmName("SoundPoolFactory")
+@file:Suppress("DEPRECATION")
 
 package com.namazed.beatboxbignerdranch
 

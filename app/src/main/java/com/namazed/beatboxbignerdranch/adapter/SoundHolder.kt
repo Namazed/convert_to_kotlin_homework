@@ -6,12 +6,13 @@ import android.view.View
 import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
 import com.namazed.beatboxbignerdranch.BeatBox
-import com.namazed.beatboxbignerdranch.R
 import com.namazed.beatboxbignerdranch.Sound
+import kotlinx.android.extensions.LayoutContainer
+import kotlinx.android.synthetic.main.list_item_sound.*
 
-class SoundHolder (itemView: View, private val beatBox: BeatBox) :
-    RecyclerView.ViewHolder(itemView), View.OnClickListener {
-    private val soundButton: Button = itemView.findViewById(R.id.list_item_sound_button)
+class SoundHolder(override val containerView: View, private val beatBox: BeatBox) :
+    RecyclerView.ViewHolder(containerView), LayoutContainer, View.OnClickListener {
+    private val soundButton: Button = list_item_sound_button
     private var sound: Sound? = null
 
     init {
@@ -24,7 +25,7 @@ class SoundHolder (itemView: View, private val beatBox: BeatBox) :
     }
 
     override fun onClick(view: View) {
-        sound?.let{
+        sound?.let {
             beatBox.play(it)
         }
     }

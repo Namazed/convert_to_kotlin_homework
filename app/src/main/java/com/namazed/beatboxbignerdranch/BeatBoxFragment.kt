@@ -1,3 +1,5 @@
+@file: JvmName("BeatBoxFragment")
+
 package com.namazed.beatboxbignerdranch
 
 import android.os.Bundle

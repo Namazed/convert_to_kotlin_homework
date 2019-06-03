@@ -1,4 +1,4 @@
-@file: JvmName("SoundAdapter")
+@file: JvmName("SoundHolder")
 
 package com.namazed.beatboxbignerdranch.adapter
 

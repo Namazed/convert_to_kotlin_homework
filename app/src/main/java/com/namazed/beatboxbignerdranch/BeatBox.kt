@@ -1,4 +1,4 @@
-@file: JvmName("BeatBox")
+@file: JvmName("BeatBoxKt")
 package com.namazed.beatboxbignerdranch
 
 import android.content.Context
@@ -6,23 +6,23 @@ import android.content.res.AssetManager
 import android.media.AudioManager
 import android.media.SoundPool
 import android.util.Log
-
 import java.io.IOException
 import java.util.ArrayList
 
-class BeatBox internal constructor(context: Context) {
+private const val TAG = "BeatBox"
+private const val SOUNDS_FOLDER = "sample_sounds"
+private const val MAX_SOUNDS = 5
 
-    private val assets: AssetManager
+class BeatBox constructor(context: Context) {
+
+    private val assets: AssetManager = context.assets
 
     @JvmField
     val sounds = ArrayList<Sound>()
 
-    private val soundPool: SoundPool
+    private val soundPool: SoundPool = SoundPoolFactory.createSoundPool(MAX_SOUNDS, AudioManager.STREAM_MUSIC)
 
     init {
-        assets = context.assets
-        soundPool = SoundPoolFactory.createSoundPool(MAX_SOUNDS, AudioManager.STREAM_MUSIC)
-
         loadSounds()
     }
 
@@ -30,7 +30,6 @@ class BeatBox internal constructor(context: Context) {
         val soundId = sound.soundId
         soundPool.play(soundId, 1.0f, 1.0f, 1, 0, 1.0f)
     }
-
 
     internal fun release() {
         soundPool.release()
@@ -46,19 +45,16 @@ class BeatBox internal constructor(context: Context) {
             return
         }
 
-        if (soundNames == null) {
-            Log.i(TAG, "SoundNames is null")
-            return
-        }
+         soundNames ?: return
 
-        for (filename in soundNames) {
+         soundNames.forEach {
             try {
-                val assetPath = "$SOUNDS_FOLDER/$filename"
+                val assetPath = "$SOUNDS_FOLDER/$it"
                 val sound = Sound(assetPath)
                 load(sound)
                 sounds.add(sound)
             } catch (e: IOException) {
-                Log.e(TAG, "Could not load sound $filename", e)
+                Log.e(TAG, "Could not load sound $it", e)
             }
 
         }
@@ -69,12 +65,5 @@ class BeatBox internal constructor(context: Context) {
         val assetFileDescriptor = assets.openFd(sound.assetPath)
         val soundId = soundPool.load(assetFileDescriptor, 1)
         sound.soundId = soundId
-    }
-
-    companion object {
-
-        private val TAG = "BeatBox"
-        private val SOUNDS_FOLDER = "sample_sounds"
-        private val MAX_SOUNDS = 5
     }
 }

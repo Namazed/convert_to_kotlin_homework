@@ -2,26 +2,24 @@
 package com.namazed.beatboxbignerdranch.adapter
 
 import android.view.View
-import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
 import com.namazed.beatboxbignerdranch.BeatBox
-import com.namazed.beatboxbignerdranch.R
 import com.namazed.beatboxbignerdranch.Sound
+import kotlinx.android.extensions.LayoutContainer
+import kotlinx.android.synthetic.main.list_item_sound.list_item_sound_button
 
-class SoundHolder internal constructor(itemView: View, private val beatBox: BeatBox) :
-    RecyclerView.ViewHolder(itemView), View.OnClickListener {
+class SoundHolder internal constructor(override val  containerView: View, private val beatBox: BeatBox) :
+    RecyclerView.ViewHolder(containerView), View.OnClickListener, LayoutContainer{
 
-    private val soundButton: Button
     private var sound: Sound? = null
 
     init {
-        soundButton = itemView.findViewById(R.id.list_item_sound_button)
-        soundButton.setOnClickListener(this)
+        list_item_sound_button.setOnClickListener(this)
     }
 
     internal fun bindSound(sound: Sound) {
         this.sound = sound
-        soundButton.text = this.sound!!.name
+        list_item_sound_button.text = this.sound?.name
     }
 
     override fun onClick(view: View) {

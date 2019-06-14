@@ -1,4 +1,4 @@
-@file: JvmName("BeatBoxFragmentFile")
+@file: JvmName("BeatBoxFragmentFileKt")
 package com.namazed.beatboxbignerdranch
 
 import androidx.fragment.app.Fragment
@@ -7,39 +7,32 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.namazed.beatboxbignerdranch.adapter.SoundAdapter
+import kotlinx.android.synthetic.main.fragment_beat_box.fragment_beat_box_recycler_view
+
+private const val BEAT_BOX_FRAGMET = R.layout.fragment_beat_box
 
 class BeatBoxFragment : Fragment() {
 
-    @JvmField
-    var beatBox: BeatBox? = null
+    private val beatBox: BeatBox by lazy(LazyThreadSafetyMode.NONE){ BeatBox(activity!!)}
 
-    override fun onCreate (savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        retainInstance = true
-        beatBox = BeatBox(activity!!)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        fragment_beat_box_recycler_view.apply {
+            layoutManager = GridLayoutManager(activity, 3)
+            adapter = SoundAdapter(beatBox.sounds, beatBox)
+        }
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        val beatBoxVal: BeatBox? = beatBox
-        val view = inflater.inflate(BEAT_BOX_FRAGMET, container, false)
-        val recyclerView = view.findViewById<RecyclerView>(RECYCLER_FRAGMENT)
-        recyclerView.layoutManager = GridLayoutManager(activity, 3)
-        recyclerView.adapter = SoundAdapter(beatBoxVal!!.sounds, beatBoxVal)
-        return view
-    }
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
+     inflater.inflate(BEAT_BOX_FRAGMET, container, false)
 
     override fun onDestroy() {
         super.onDestroy()
-        beatBox!!.release()
+        beatBox.release()
     }
 
     companion object {
-
-        private val RECYCLER_FRAGMENT = R.id.fragment_beat_box_recycler_view
-        private val BEAT_BOX_FRAGMET = R.layout.fragment_beat_box
-
         @JvmStatic
         fun newInstance(): BeatBoxFragment {
             return BeatBoxFragment()

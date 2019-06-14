@@ -1,4 +1,4 @@
-@file: JvmName("BeatBoxActivity")
+@file: JvmName("BeatBoxActivityKt")
 package com.namazed.beatboxbignerdranch
 
 import androidx.fragment.app.Fragment
@@ -6,6 +6,8 @@ import androidx.fragment.app.FragmentManager
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 
+private const val LAYOUT = R.layout.activity_fragment
+private const val CONTAINER_FRAGMENT = R.id.fragment_container
 class BeatBoxActivity : AppCompatActivity() {
 
     public override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,15 +17,8 @@ class BeatBoxActivity : AppCompatActivity() {
         val manager: FragmentManager = supportFragmentManager
         var fragment: Fragment? = manager.findFragmentById(CONTAINER_FRAGMENT)
 
-        if (fragment == null) {
-            fragment = BeatBoxFragment.newInstance()
-            manager.beginTransaction().add(CONTAINER_FRAGMENT, fragment).commit()
+     fragment ?: manager.beginTransaction().run {
+            add(CONTAINER_FRAGMENT, BeatBoxFragment.newInstance()).commit()
         }
-    }
-
-    companion object {
-
-        private val LAYOUT = R.layout.activity_fragment
-        private val CONTAINER_FRAGMENT = R.id.fragment_container
     }
 }

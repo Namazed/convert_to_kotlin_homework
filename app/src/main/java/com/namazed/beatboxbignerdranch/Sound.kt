@@ -1,8 +1,13 @@
+@file: JvmName("SoundKt")
 package com.namazed.beatboxbignerdranch
 
-class Sound internal constructor(internal val assetPath: String) {
+class Sound constructor(internal val assetPath: String) {
+
+    @JvmField
     val name: String
-    internal var soundId: Int = 0
+
+    @JvmField
+    var soundId: Int = 0
 
     init {
         val components = assetPath.split("/".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
